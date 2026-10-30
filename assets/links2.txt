@@ -1,0 +1,137 @@
+{isOpen ? (
+                    <i
+                        className="ri-close-line text-4xl text-[#9D2117] transition-all duration-300 scale-100 opacity-100"
+                        key="close"
+                    />
+                ) : (
+                    <i
+                        className="ri-menu-2-line text-3xl text-[#9D2117] transition-all duration-300 scale-100 opacity-100"
+                        key="menu"
+                    />
+                )}
+
+ <button className="relative px-8 py-3 border-none text-[#9D2117] font-[Minecraft] uppercase cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] text-base group overflow-hidden">
+          <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+            Explore
+          </span>
+
+          {/* Animated circle background */}
+          <div className="absolute inset-0 z-0">
+            <span
+              className="absolute h-0 w-0 rounded-full bg-[#9D2117] opacity-0 
+    group-hover:h-[400%] group-hover:w-[400%] group-hover:opacity-100 
+    transition-all duration-500 ease-out"
+              style={{
+                left: "var(--mouse-x)",
+                top: "var(--mouse-y)",
+                transform: "translate(-50%, -50%)",
+              }}
+            ></span>
+          </div>
+
+          {/* Border */}
+          <svg
+            className="absolute inset-0 w-full h-full pointer-events-none"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+          >
+            <polygon
+              points="0,0 95,0 100,20 100,100 5,100 0,80"
+              fill="none"
+              stroke="#9D2117"
+              strokeWidth="2"
+              vectorEffect="non-scaling-stroke"
+              className="transition-colors duration-300 group-hover:stroke-[#8b5f5f]"
+            />
+          </svg>
+
+          {/* Mouse position tracker */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+      document.querySelector('button').addEventListener('mousemove', function(e) {
+        const rect = this.getBoundingClientRect();
+        this.style.setProperty('--mouse-x', e.clientX - rect.left + 'px');
+        this.style.setProperty('--mouse-y', e.clientY - rect.top + 'px');
+      });
+    `,
+            }}
+          />
+        </button>
+
+  const data = [
+    { title: "app web dev", img: "/imgs/page3/img.jpg" },
+    { title: "creative web dev", img: "https://img.freepik.com/free-photo/cartoon-man-wearing-glasses_23-2151136831.jpg?semt=ais_hybrid&w=740" },
+    { title: "creative web dev", img: "https://wallpapers.com/images/hd/gaming-profile-pictures-lkjg18mv76d194md.jpg" },
+    { title: "creative web dev", img: "https://t4.ftcdn.net/jpg/07/12/90/99/360_F_712909943_dTMUr2HPiqyzSULwG9eznhVbf56CxysI.jpg" },
+    { title: "augmented reality", img: "https://img.freepik.com/free-photo/cartoon-woman-wearing-glasses_23-2151136870.jpg?w=360" },
+  ];
+
+   <svg
+                                className="absolute inset-0 w-full h-full pointer-events-none main-svg"
+                                viewBox="0 0 100 100"
+                                preserveAspectRatio="none"
+                            >
+                                <polygon
+                                    points="0,0 75,0 100,25 100,100 25,100 0,75"
+                                    fill="none"
+                                    stroke={isCenter ? "#9D2117" : "#808080"}
+                                    strokeWidth="5"
+                                    vectorEffect="non-scaling-stroke"
+                                />
+                            </svg>
+
+<svg
+                                            className="absolute inset-0 w-full h-full pointer-events-none"
+                                            viewBox="0 0 100 100"
+                                            preserveAspectRatio="none"
+                                        >
+                                            <polygon
+                                                points="0,0 95,0 100,20 100,100 5,100 0,80"
+                                                fill="none"
+                                                stroke="white"
+                                                strokeWidth="3"
+                                                vectorEffect="non-scaling-stroke"
+                                            />
+                                        </svg>
+
+ <svg
+                                        className="absolute inset-0 w-full h-full pointer-events-none inner-svg"
+                                        viewBox="0 0 100 100"
+                                        preserveAspectRatio="none"
+                                    >
+                                        <polygon
+                                            points="0,0 75,0 100,25 100,100 25,100 0,75"
+                                            fill="none"
+                                            stroke={isCenter ? "#9D2117" : "#808080"}
+                                            strokeWidth="15"
+                                            vectorEffect="non-scaling-stroke"
+                                        />
+                                    </svg>
+
+const works = [
+    {
+      sno: "01",
+      name: "REBELLION",
+      text: "A Next.js automotive configurator with 3D model rendering using React Three Fiber. Features real-time customization, AR previews, and GSAP animations for immersive UX.",
+      vid: "/imgs/page3/Rebellion01.mp4",
+    },
+    {
+      sno: "02",
+      name: "CREEEDS",
+      text: "Interactive design system built with React 18, Storybook and Framer Motion. Micro-interactions powered by CSS Houdini and WebGL shaders for next-gen UI experiences.",
+      vid: "/imgs/page3/miranda.mp4",
+    },
+    {
+      sno: "03",
+      name: "MARSHALL",
+      text: "React-based audio dashboard using Web Audio API and D3.js. Implements real-time waveform visualization with custom React hooks for performance optimization.",
+      vid: "/imgs/page3/modern muses.mp4",
+    },
+    {
+      sno: "04",
+      name: "ISRO 07",
+      text: "Space data portal with React Suspense and Server Components. Features ISRO API integration, WebGL star maps, and GSAP-powered scroll animations.",
+      vid: "/imgs/page3/Work03.mp4",
+    },
+  ];

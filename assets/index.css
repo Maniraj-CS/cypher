@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@import "remixicon/fonts/remixicon.css";
+@import "lenis/dist/lenis.css";
+
+@font-face {
+  font-family: "Minecraft";
+  src: url("/fonts/Minecraft.ttf");
+}
+
+@font-face {
+  font-family: "Aux-mono";
+  src: url("/fonts/aux-mono.ttf");
+}
+
+::-webkit-scrollbar {
+  width: 0.1px;
+  height: 0.1px;
+  background-color: black;
+}
