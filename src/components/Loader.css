@@ -1,0 +1,51 @@
+.loader-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #111010;
+    z-index: 9999;
+    position: fixed;
+}
+
+.loader-video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.video-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.725);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+
+.loading-line{
+    width: 20vw;
+    height: 0.4vw;
+    background-color: white;
+    border: 1px solid #9D2117;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.loading-progress{
+    height: 100%;
+    background-color: #E35E4E;
+    transition: width 0.1s linear;
+}
