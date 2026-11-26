@@ -1,7 +1,25 @@
 import { useEffect, useState, useRef } from 'react'
 import { motion } from 'framer-motion'
+import type { CSSProperties } from 'react'
+import type { HTMLMotionProps } from 'framer-motion'
 
-const styles = {
+type DecryptedTextProps = Omit<HTMLMotionProps<'span'>, 'children' | 'className'> & {
+  text: string
+  speed?: number
+  maxIterations?: number
+  sequential?: boolean
+  revealDirection?: 'start' | 'end' | 'center'
+  useOriginalCharsOnly?: boolean
+  characters?: string
+  className?: string
+  parentClassName?: string
+  encryptedClassName?: string
+  animateOn?: 'hover' | 'view'
+  resetOnChange?: boolean
+  resetOnView?: boolean
+}
+
+const styles: { wrapper: CSSProperties; srOnly: CSSProperties } = {
   wrapper: {
     display: 'inline-block',
     whiteSpace: 'pre-wrap',
@@ -33,13 +51,13 @@ export default function DecryptedText({
   resetOnChange = false,
   resetOnView = false, // New prop to control view reset behavior
   ...props
-}) {
+}: DecryptedTextProps) {
   const [displayText, setDisplayText] = useState(text)
   const [isHovering, setIsHovering] = useState(false)
   const [isScrambling, setIsScrambling] = useState(false)
-  const [revealedIndices, setRevealedIndices] = useState(new Set())
+  const [revealedIndices, setRevealedIndices] = useState<Set<number>>(new Set())
   const [hasAnimated, setHasAnimated] = useState(false)
-  const containerRef = useRef(null)
+  const containerRef = useRef<HTMLSpanElement>(null)
   const isFirstRender = useRef(true)
 
   // Reset when text changes if resetOnChange is true
@@ -54,10 +72,10 @@ export default function DecryptedText({
 
   // Animation logic
   useEffect(() => {
-    let interval
+    let interval: ReturnType<typeof setInterval> | undefined
     let currentIteration = 0
 
-    const getNextIndex = (revealedSet) => {
+    const getNextIndex = (revealedSet: Set<number>) => {
       const textLength = text.length
       switch (revealDirection) {
         case 'start':
@@ -90,9 +108,9 @@ export default function DecryptedText({
       ? Array.from(new Set(text.split(''))).filter((char) => char !== ' ')
       : characters.split('')
 
-    const shuffleText = (originalText, currentRevealed) => {
+    const shuffleText = (originalText: string, currentRevealed: Set<number>) => {
       if (useOriginalCharsOnly) {
-        const positions = originalText.split('').map((char, i) => ({
+        const positions = originalText.split('').map((char: string, i: number) => ({
           char,
           isSpace: char === ' ',
           index: i,
@@ -100,8 +118,8 @@ export default function DecryptedText({
         }))
 
         const nonSpaceChars = positions
-          .filter((p) => !p.isSpace && !p.isRevealed)
-          .map((p) => p.char)
+          .filter((p: { isSpace: boolean; isRevealed: boolean }) => !p.isSpace && !p.isRevealed)
+          .map((p: { char: string }) => p.char)
 
         for (let i = nonSpaceChars.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1))
@@ -110,7 +128,7 @@ export default function DecryptedText({
 
         let charIndex = 0
         return positions
-          .map((p) => {
+          .map((p: { isSpace: boolean; isRevealed: boolean; index: number }) => {
             if (p.isSpace) return ' '
             if (p.isRevealed) return originalText[p.index]
             return nonSpaceChars[charIndex++]
@@ -119,7 +137,7 @@ export default function DecryptedText({
       } else {
         return originalText
           .split('')
-          .map((char, i) => {
+          .map((char: string, i: number) => {
             if (char === ' ') return ' '
             if (currentRevealed.has(i)) return originalText[i]
             return availableChars[Math.floor(Math.random() * availableChars.length)]
@@ -180,7 +198,7 @@ export default function DecryptedText({
   useEffect(() => {
     if (animateOn !== 'view') return
 
-    const observerCallback = (entries) => {
+    const observerCallback: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           if (resetOnView || !hasAnimated) {
@@ -236,7 +254,7 @@ export default function DecryptedText({
       <span style={styles.srOnly}>{displayText}</span>
 
       <span aria-hidden="true">
-        {displayText.split('').map((char, index) => {
+        {displayText.split('').map((char: string, index: number) => {
           const isRevealedOrDone =
             revealedIndices.has(index) || !isScrambling || !isHovering
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import DecryptedText from "../Animations/DecryptedText";
+import DecryptedText from "../../Animations/DecryptedText";
 
 const Footer = () => {
   return (

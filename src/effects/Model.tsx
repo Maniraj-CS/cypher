@@ -1,4 +1,5 @@
 import React from 'react'
+import * as THREE from 'three'
 import { useThree , useFrame } from '@react-three/fiber'
 import { useAspect, useTexture } from '@react-three/drei';
 import { animate } from "framer-motion"
@@ -14,7 +15,7 @@ const Model : React.FC<IModel> = ({ activeMenu }) => {
 
     const { viewport } = useThree();
     const mouse = useMouse();
-    const meshRef = React.useRef<any>(null);
+    const meshRef = React.useRef<THREE.Mesh<THREE.PlaneGeometry, THREE.ShaderMaterial> | null>(null);
 
 
     const textures = useTexture(content.map((elem) => elem.src))
@@ -25,12 +26,12 @@ const Model : React.FC<IModel> = ({ activeMenu }) => {
 
     const scale = useAspect(width * 1.1 , height * 0.7 , 0.165);
 
-    const uniforms = React.useRef({
+    const uniforms = React.useMemo(() => ({
         uTexture: { value : textures[0]},
         uDelta: { value : { x: 0 , y: 0 } },
         uTime: { value : 0},
         uAlpha: { value: 0}
-    })
+    }), [textures])
 
     React.useEffect(() => {
         if(!meshRef.current) return;
@@ -85,7 +86,7 @@ const Model : React.FC<IModel> = ({ activeMenu }) => {
         fragmentShader={fragment}
         vertexShader={vertex}
         transparent={true}
-        uniforms={uniforms.current}
+        uniforms={uniforms}
         />
    </mesh>
   )

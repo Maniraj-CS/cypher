@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from 'motion/react';
 import React from 'react'
 import Scene from "../../effects/Scene"
 import { content } from '../../effects/data';
-import { h1 } from 'framer-motion/client';
 
 const Navebar = () => {
 

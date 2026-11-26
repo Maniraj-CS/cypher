@@ -21,10 +21,10 @@ const Loader = () => {
 				}
 				return prevProgress + increment;
 			})
-		}, interval);
+		}, interval); // here inverval means every 50ms run this setInterval function
 
 		return () => clearInterval(intervalId);
-	}, []);
+	    }, []);
 
 	useEffect(() => {
 		if (progress >= 100 && loaderRef.current) {

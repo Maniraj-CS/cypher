@@ -1,75 +1,72 @@
-# React + TypeScript + Vite
+# Cyphers
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Cyphers is a dark, motion-focused portfolio landing page built to showcase creative web design. It combines bold typography, layered visuals, scroll-based animation, and interactive image effects in a responsive single-page experience.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Animated hero section with the Cyphers title and mouse-follow movement
+- Scroll-driven transitions and smooth scrolling
+- WebGL image distortion effects powered by Three.js and React Three Fiber
+- Multiple showcase sections, including project cards and visual content
+- Custom loading screen, navigation, progress indicator, and footer
+- Responsive layouts for desktop and mobile screens
 
-## React Compiler
+## Built with
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19 and TypeScript
+- Vite
+- Tailwind CSS
+- GSAP and ScrollTrigger
+- Three.js and React Three Fiber
+- Motion and Lenis
 
-## Expanding the ESLint configuration
+## Getting started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Requirements
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js (a current LTS release is recommended)
+- npm
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Install dependencies
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+### Start the development server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm run dev
 ```
+
+Vite prints a local URL in the terminal after the server starts.
+
+## Available commands
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the local development server |
+| `npm run build` | Type-check the project and create a production build in `dist/` |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint |
+
+## Project structure
+
+```text
+src/
+  Animations/   Reusable text and marquee animations
+  components/   Page sections, navigation, loader, and footer
+  effects/      Three.js shaders and interactive image effects
+  shaders/      GLSL shader source files
+public/
+  fonts/        Local font files
+  imgs/         Images, video, and audio used by the page
+```
+
+## Assets
+
+The page loads its visual assets from `public/`. Keep referenced files in their current folders when changing or replacing images, fonts, videos, or audio. The WebGL image effects use shader files from `src/shaders/`.
+
+## Production build
+
+Run `npm run build` to generate the optimized site in `dist/`. Deploy the contents of that folder to a static hosting service that supports single-page Vite sites.
