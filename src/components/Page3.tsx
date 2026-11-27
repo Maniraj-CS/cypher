@@ -136,7 +136,7 @@ export default function Page3() {
 	}, [currentIndex])
 
 	return (
-		<div className='py-[2vh] md:py-[5vh] font-[Minecraft] lg:min-h-screen w-full overflow-hidden
+		<div className='py-[2vh] md:py-[15vh] font-[Minecraft] lg:min-h-screen w-full overflow-hidden
     relative'
 		>
 
@@ -160,7 +160,7 @@ export default function Page3() {
 				<i className='ri-arrow-left-wide-fill'></i>
 			</button>
 
-			<div className="flex items-center justify-center h-full w-full ">
+			<div className="flex items-center justify-center h-full w-full md:pt-[35vh] ">
 				{
 					data.map((value, index) => {
 						const position = (index - currentIndex + data.length) % data.length;
@@ -172,7 +172,7 @@ export default function Page3() {
 								key={index}
 								ref={(el) => { itemsRef.current[index] = el; }}
 								className={`absolute h-[40vh] md:h-[55vh] w-[70%] lg:w-[25%] transition-all 
-              duration-300`}
+              duration-300 `}
 								style={{
 									display: isVisible ? "block" : "none",
 									pointerEvents: isCenter ? "auto" : "none"

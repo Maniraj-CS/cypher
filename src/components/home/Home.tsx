@@ -39,15 +39,13 @@ function Home() {
 		entryAnim.fromTo(
 			orderedLettersIn.map((l) => l.element),
 			{
-				y: -100,
-				opacity:0
+				y: -500,
 			},
 			{
 				y: 0,
 				delay: 6,
-				opacity:1,
 				stagger: {
-					each: 0.5,
+					each: 0.2,
 					ease: "linear"
 				},
 			}
@@ -173,7 +171,7 @@ function Home() {
 				<div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full lg:w-[70%] 
         h-full overflow-y-hidden flex items-center justify-center">
 					<div ref={centerImage}
-						className='h-full lg:h-[100%] w-full hidden lg:block'>
+						className='h-full lg:h-[100%]  w-full hidden lg:block'>
 						<ImgEffectContainer img={`./imgs/home/model.png`} />
 					</div>
 					<img src="./imgs/home/model.png" alt=""
